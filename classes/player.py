@@ -21,9 +21,17 @@ class Player:
     def throw_dice(self):
         self.d2 = (random.randrange(6)+1)
         self.d1 = (random.randrange(6)+1)
+
+    def throw_dice_for_turn(self):
+        self.d2 = (random.randrange(6)+1)
+        self.d1 = (random.randrange(6)+1)
         print(self.name,"a obtenu un",str(self.d2),"et un",str(self.d1))
         if self.d1 == self.d2:
             self.nb_doubles+=1
+            if self.nb_doubles==3:
+                self.turns_left_in_jail = 3
+
+
 
     def gain(self, amount): 
         self.balance += amount
