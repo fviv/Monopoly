@@ -24,10 +24,8 @@ class Main :
 
     def turns_order(self):
         playerTurns = []
-
         for player in self.players:
             player.throw_dice()
-
         i=0
         while i<len(self.players): 
             if len(playerTurns)>0:
@@ -41,6 +39,4 @@ class Main :
             else:
                 playerTurns.append(self.players[i])
             i+=1
-
-
         self.players = playerTurns

@@ -11,6 +11,7 @@ class Player:
         self.d1 = 0
         self.d2 = 0
         self.turn = False
+        self.properties = []
         
     def ask_name(self):
         self.name = input("Entrez votre nom : ")
@@ -30,18 +31,24 @@ class Player:
             self.nb_doubles+=1
             if self.nb_doubles==3:
                 self.turns_left_in_jail = 3
-
-
-
+                
     def gain(self, amount): 
         self.balance += amount
     
     def pay_to(self,player, amount):
-        self.balance -= amount
-        player.gain(amount)
-
+        if (self.balance-amount) > 0 :
+            self.balance -= amount
+            player.gain(amount)
+            return True
+        else:
+            return False 
+        
     def lose(self, amount):
-        self.balance -= amount
+        if (self.balance-amount) > 0 :
+            self.balance -= amount
+            return True
+        else:
+            return False
     
     def move(self):
         self.position +=(self.d1+self.d2)

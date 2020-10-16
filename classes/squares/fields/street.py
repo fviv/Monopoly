@@ -22,8 +22,10 @@ class Street(Field):
         # only if complete set 
         if self.nb_houses<4:
             answer = input("Voulez-vous construire une maison ? y/n")
-            if answer=="y" :
+            if answer=="y":
+                self.owner.lose(self.houses_price)
                 self.nb_houses+=1
+
             elif answer == "n":
                 pass
             else:
